@@ -1,0 +1,53 @@
+ERP Application
+What??
+Resources planning and management for a food store
+
+----------------------------------------------------------------
+
+MODELS?
+1. User
+    name, email, orders, cart, role(normal and admin)
+2. Item
+    name, imageURL, price, quantity, category
+
+----------------------------------------------------------------
+
+Functionalities
+
+User Side
+1. User sign in, sign up - using email as well as google sign in
+2. User can see the items with categories
+3. User can add to cart, remove also
+4. User can place order
+5. User can see his orders history
+
+Admin Side
+1. Can add, update and delete the product/items
+2. Can see all the products
+3. List of total 
+    i. Users registered 
+    ii. Total items available
+    iii. Total orders placed
+    iv. Total categories
+
+----------------------------------------------------------------
+
+ROUTES
+
+User Authentication:
+    /signup: POST - Create a new user account.
+    /login: POST - Log in to an existing account.
+    /getAllItems: GET - Get all the items available
+    /addToCart/:itemId - POST - Add item to the user cart
+    /removeFromCart/:itemId - DELETE - Remove particular item from the cart
+    /getAllOrders/ - GET - See all the items ordered so far
+    /placeOrder/:itemId - POST
+
+Admin: 
+    /addItem - POST
+    /getAllItems - GET
+    /deleteItem:itemId - DELETE
+    /updateItem:itemId - PUT 
+    /getAllUsers - GET
+    /totalOrdersPlaced - GET
+    /totalCategories - GET
