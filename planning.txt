@@ -5,10 +5,10 @@ Resources planning and management for a food store
 ----------------------------------------------------------------
 
 MODELS?
-1. User
-    name, email, orders, cart, role(normal and admin)
-2. Item
-    name, imageURL, price, quantity, category
+1. User:  name, email, role(normal and admin)
+2. Item: name, imageURL, price, quantity, category
+3. cart: ref(User), 
+4. order: ref(User), 
 
 ----------------------------------------------------------------
 
