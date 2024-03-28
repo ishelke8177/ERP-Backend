@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 // Define the Item schema
 const cartSchema = new mongoose.Schema({

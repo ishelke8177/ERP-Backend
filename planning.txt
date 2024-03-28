@@ -35,19 +35,19 @@ Admin Side
 ROUTES
 
 User Authentication:
-    /signup: POST - Create a new user account.
-    /login: POST - Log in to an existing account.
     /getAllItems: GET - Get all the items available
-    /addToCart/:itemId - POST - Add item to the user cart
-    /removeFromCart/:itemId - DELETE - Remove particular item from the cart
     /getAllOrders/ - GET - See all the items ordered so far
+    /login: POST - Log in to an existing account.
+    /signup: POST - Create a new user account.
+    /addToCart/:itemId - POST - Add item to the user cart
     /placeOrder/:itemId - POST
+    /removeFromCart/:itemId - DELETE - Remove particular item from the cart
 
 Admin: 
-    /addItem - POST
     /getAllItems - GET
+    /getAllUsers - GET
+    /totalCategories - GET
+    /totalOrdersPlaced - GET
+    /addItem - POST
     /deleteItem:itemId - DELETE
     /updateItem:itemId - PUT 
-    /getAllUsers - GET
-    /totalOrdersPlaced - GET
-    /totalCategories - GET

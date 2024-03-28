@@ -1,17 +1,12 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 // Define the Item schema
 const itemSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-    },
     itemName: {
         type: String,
         required: true
     },
-    imageURL: {
+    image: {
         type: String,
         required: true
     },
@@ -25,6 +20,8 @@ const itemSchema = new mongoose.Schema({
     },
     category: {
         type: String,
+        enum: ['South Indian', 'Chinese', 'Maharashtrian', 'Ice Cream'],
+        default: 'South Indian',
         required: true
     },
 });

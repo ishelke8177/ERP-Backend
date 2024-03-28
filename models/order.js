@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 // Define the Item schema
 const orderSchema = new mongoose.Schema({
@@ -16,11 +15,11 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: true
     },
     quantity: {
-        type: String,
+        type: Number,
         required: true
     },
     category: {
