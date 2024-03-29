@@ -9,10 +9,12 @@ const PORT = process.env.PORT || 3000;
 const userRoutes = require('./routes/api/userRoutes')
 const authRoute = require('./routes/api/authRoute')
 const itemRoutes = require('./routes/api/itemRoutes')
+const cartRoutes = require('./routes/api/cartRoutes')
 
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoute)
 app.use('/api/item', itemRoutes)
+app.use('/api/cart', cartRoutes)
 
 app.listen(PORT, ()=>{
     console.log('listening on port 3000');

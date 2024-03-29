@@ -14,7 +14,11 @@ const cartSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price: {
+    pricePerItem: {
+        type: Number,
+        required: true
+    },
+    totalPrice: {
         type: Number,
         required: true
     },
