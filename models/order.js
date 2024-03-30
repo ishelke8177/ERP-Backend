@@ -14,7 +14,11 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price: {
+    pricePerItem: {
+        type: Number,
+        required: true
+    },
+    totalPrice: {
         type: Number,
         required: true
     },
@@ -26,6 +30,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    timestamp: { 
+        type: Date, 
+        default: Date.now 
+    }
 });
 
 const User = mongoose.model('Order', orderSchema);

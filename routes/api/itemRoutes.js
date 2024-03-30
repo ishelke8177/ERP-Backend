@@ -23,6 +23,7 @@ router.post('/addItem', [jwtAuthMiddleware, upload.single('image')], async (req,
         
         const file = req.file
         const imageName = generateFileName()
+        console.log('req.file', req.file);
       
         const fileBuffer = await sharp(file.buffer)
           .resize({ height: 1920, width: 1080, fit: "contain" })

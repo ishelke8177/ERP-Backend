@@ -5,11 +5,25 @@ const User = require('../../models/user');
 const { jwtAuthMiddleware } = require('../../jwt');
 
 // @route    GET api/cart/getCartItems
-// @desc     Get cart items
+// @desc     Get cart items for all users
 // @access   Private
 router.get('/getCartItems', jwtAuthMiddleware, async (req, res) => {
     try{
         const cartItems = await Cart.find()
+        res.status(200).json(cartItems)
+    }catch(err){
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+// @route    GET api/cart/getUserCart
+// @desc     Get cart items for particular user
+// @access   Private
+router.get('/getUserCart', jwtAuthMiddleware, async (req, res) => {
+    try{
+        const cartItems = await Cart.find({ user: req.user.id})
         res.status(200).json(cartItems)
     }catch(err){
         console.error(err);
