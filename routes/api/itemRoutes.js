@@ -23,8 +23,7 @@ router.post('/addItem', [jwtAuthMiddleware, upload.single('image')], async (req,
         
         const file = req.file
         const imageName = generateFileName()
-        console.log('req.file', req.file);
-      
+
         const fileBuffer = await sharp(file.buffer)
           .resize({ height: 1920, width: 1080, fit: "contain" })
           .toBuffer()
@@ -48,7 +47,27 @@ router.post('/addItem', [jwtAuthMiddleware, upload.single('image')], async (req,
 // @route    PUT api/item/updateItem
 // @desc     Update Item from the DB
 // @access   Private
+router.put('/updateItem/:itemId', [jwtAuthMiddleware, upload.single('image')], async (req, res) => {
+    try {
+        if(!(await checkAdminRole(req.user.id)))
+            return res.status(403).json({message: 'user does not have admin role'});
 
+        const file = req.file
+        const imageName = generateFileName()
+                  
+        const fileBuffer = await sharp(file.buffer)
+          .resize({ height: 1920, width: 1080, fit: "contain" })
+          .toBuffer()
+          
+        const uploadResult = await uploadFile(fileBuffer, imageName, file.mimetype)
+
+        const resp = await Item.findByIdAndUpdate(req.params.itemId, {image: uploadResult?.Location, ...req.body})
+        res.status(200).json(resp)
+    } catch (error) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
 
 
 // @route    DELETE api/item/deleteItem/:itemId
